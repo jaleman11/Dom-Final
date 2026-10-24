@@ -1,0 +1,228 @@
+/* =========================================================
+   Actividad 1: DOM - Hoja de estilos general
+   Se usa en: index, calculadora, venta, promedio, salario, otra
+   ========================================================= */
+
+/* ---------- Variables de color ---------- */
+:root {
+  --color-fondo: #f2f5fa;
+  --color-tarjeta: #ffffff;
+  --color-primario: #2563eb;
+  --color-primario-oscuro: #1d4ed8;
+  --color-texto: #1f2937;
+  --color-borde: #d1d5db;
+  --color-resultado: #ecfdf5;
+  --color-resultado-borde: #10b981;
+  --radio: 10px;
+  --sombra: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+/* ---------- Reset básico ---------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ---------- Cuerpo de la página ---------- */
+body {
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  line-height: 1.6;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 32px 16px;
+}
+
+/* ---------- Títulos ---------- */
+h1 {
+  font-size: 1.9rem;
+  color: var(--color-primario);
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 3px solid var(--color-primario);
+}
+
+h2 {
+  font-size: 1.25rem;
+  margin: 28px 0 12px;
+}
+
+/* ---------- Párrafos y código ---------- */
+p {
+  background-color: var(--color-tarjeta);
+  padding: 16px 20px;
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+}
+
+code {
+  background-color: #eef2ff;
+  color: #4338ca;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+/* ---------- Enlace "Volver al inicio" ---------- */
+body > a {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: var(--color-primario);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+body > a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Lista de ejercicios (index.html) ---------- */
+ul {
+  list-style: none;
+  display: grid;
+  gap: 12px;
+}
+
+ul li a {
+  display: block;
+  background-color: var(--color-tarjeta);
+  color: var(--color-texto);
+  text-decoration: none;
+  padding: 16px 20px;
+  border-radius: var(--radio);
+  border-left: 5px solid var(--color-primario);
+  box-shadow: var(--sombra);
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+ul li a:hover {
+  background-color: #eff6ff;
+  transform: translateX(6px);
+}
+
+/* ---------- Formularios ---------- */
+form {
+  background-color: var(--color-tarjeta);
+  padding: 24px;
+  margin-top: 24px;
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+}
+
+label {
+  width: 100%;
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-top: 8px;
+}
+
+input {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 1rem;
+  border: 1px solid var(--color-borde);
+  border-radius: 8px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--color-primario);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+/* Inputs de resultado (solo lectura) */
+input[readonly] {
+  background-color: var(--color-resultado);
+  border-color: var(--color-resultado-borde);
+  font-weight: 700;
+  color: #065f46;
+}
+
+/* ---------- Botones ---------- */
+button {
+  flex: 1 1 140px; /* varios botones se acomodan en la misma fila */
+  margin-top: 12px;
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: var(--color-primario);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+button:hover {
+  background-color: var(--color-primario-oscuro);
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+/* ---------- Tabla (otra.html) ---------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--color-tarjeta);
+  border-radius: var(--radio);
+  overflow: hidden;
+  box-shadow: var(--sombra);
+  border: none;
+}
+
+th {
+  background-color: var(--color-primario);
+  color: #ffffff;
+  text-align: left;
+  padding: 12px 16px;
+}
+
+td {
+  padding: 10px 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* Columna "Valor" alineada a la derecha (números) */
+td:last-child {
+  text-align: right;
+  font-weight: 600;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f9fafb;
+}
+
+tbody tr:hover {
+  background-color: #eff6ff;
+}
+
+/* Resaltar Subtotal, Total general y Costo por invitado */
+tbody tr:nth-child(5),
+tbody tr:nth-child(7),
+tbody tr:nth-child(8) {
+  font-weight: 700;
+  background-color: #e0ecff;
+}
+
+/* ---------- Pantallas pequeñas ---------- */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  form {
+    padding: 16px;
+  }
+
+  button {
+    flex-basis: 100%;
+  }
+}
